@@ -1,0 +1,96 @@
+school-mgt-system/
+│
+├── src/
+│   ├── config/                 # App configuration
+│   │   ├── db.js
+│   │   ├── env.js
+│   │
+│   ├── core/                   # Shared system logic
+│   │   ├── middleware/
+│   │   │   ├── auth.middleware.js
+│   │   │   ├── error.middleware.js
+│   │   │   ├── validate.middleware.js
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── generateId.js
+│   │   │   ├── gradeCalculator.js
+│   │   │   ├── logger.js
+│   │   │
+│   │   ├── constants/
+│   │   │   ├── roles.js
+│   │   │   ├── grades.js
+│   │
+│
+│   ├── modules/                # 🔥 MAIN BUSINESS LOGIC (based on workflow)
+│   │
+│   │   ├── auth/
+│   │   │   ├── auth.controller.js
+│   │   │   ├── auth.service.js
+│   │   │   ├── auth.routes.js
+│   │   │
+│   │   ├── school/
+│   │   │   ├── school.controller.js
+│   │   │   ├── school.service.js
+│   │   │   ├── school.model.js
+│   │   │   ├── school.routes.js
+│   │   │
+│   │   ├── student/
+│   │   │   ├── student.controller.js
+│   │   │   ├── student.service.js
+│   │   │   ├── student.model.js
+│   │   │   ├── student.routes.js
+│   │   │
+│   │   ├── teacher/
+│   │   │   ├── teacher.controller.js
+│   │   │   ├── teacher.service.js
+│   │   │   ├── teacher.model.js
+│   │   │   ├── teacher.routes.js
+│   │   │
+│   │   ├── academic/
+│   │   │   ├── class.model.js
+│   │   │   ├── subject.model.js
+│   │   │   ├── session.model.js
+│   │   │   ├── academic.service.js
+│   │   │   ├── academic.controller.js
+│   │   │   ├── academic.routes.js
+│   │   │
+│   │   ├── result/
+│   │   │   ├── result.controller.js
+│   │   │   ├── result.service.js
+│   │   │   ├── result.model.js
+│   │   │   ├── result.routes.js
+│   │   │
+│   │   ├── messaging/          # announcements & broadcast
+│   │   │   ├── message.controller.js
+│   │   │   ├── message.service.js
+│   │   │   ├── message.model.js
+│   │   │   ├── message.routes.js
+│   │   │
+│   │   ├── chat/               # real-time upgrade
+│   │   │   ├── chat.controller.js
+│   │   │   ├── chat.service.js
+│   │   │   ├── chat.model.js
+│   │   │   ├── chat.routes.js
+│   │   │   ├── socket.js       # WebSocket logic (future)
+│   │   │
+│   │   ├── notification/
+│   │   │   ├── notification.service.js
+│   │   │   ├── notification.model.js
+│   │   │
+│   │   ├── dashboard/
+│   │   │   ├── dashboard.controller.js
+│   │   │   ├── dashboard.service.js
+│   │
+│
+│   ├── database/
+│   │   ├── migrations/
+│   │   ├── seeders/
+│   │
+│   ├── app.js                  # Express app
+│   ├── server.js               # Entry point
+│
+├── tests/
+│
+├── .env
+├── package.json
+└── README.md
