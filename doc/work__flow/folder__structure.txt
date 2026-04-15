@@ -1,0 +1,52 @@
+src/
+│
+├── modules/
+│   ├── auth/
+│   │   ├── auth.controller.js
+│   │   ├── auth.service.js
+│   │   ├── auth.routes.js
+│   │
+│   ├── school/
+│   │   ├── school.controller.js
+│   │   ├── school.service.js
+│   │   ├── school.routes.js
+│   │
+│   ├── student/
+│   │   ├── student.controller.js
+│   │   ├── student.service.js
+│   │   ├── student.routes.js
+│   │
+│   ├── teacher/
+│   │   ├── teacher.controller.js
+│   │   ├── teacher.service.js
+│   │   ├── teacher.routes.js
+│   │
+│   ├── result/
+│   │   ├── result.controller.js
+│   │   ├── result.service.js
+│   │
+│   ├── messaging/
+│   │   ├── message.controller.js
+│   │   ├── message.service.js
+│   │
+│   ├── chat/
+│   │   ├── chat.controller.js
+│   │   ├── chat.service.js
+│   │
+│   ├── notification/
+│   │   ├── notification.service.js
+│
+├── database/
+│   ├── migrations/
+│   ├── seeders/
+│   ├── db.js
+│
+├── middlewares/
+│   ├── auth.middleware.js
+│   ├── rbac.middleware.js   👈 VERY IMPORTANT
+│
+├── utils/
+│   ├── validators.js
+│
+├── app.js
+├── server.js
