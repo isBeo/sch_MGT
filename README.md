@@ -1,262 +1,287 @@
-# 🚀 MODERN BACKEND STRUCTURE (SCHOOL SYSTEM)
-*Designed for:*
-* RBAC
-* OOP services
-* Workflow modules
-* Future scaling (chat, notifications, mobile API)
+# 🏫 School Admin Workflow System
 
-
-### 📁 ROOT STRUCTURE
-
-```
-school-system/
-│
-├── src/
-│   ├── app.js
-│   ├── server.js
-│
-│   ├── config/
-│   ├── database/
-│   ├── modules/
-│   ├── shared/
-│   ├── middlewares/
-│   ├── policies/
-│   ├── utils/
-│   └── events/
-│
-├── tests/
-├── docs/
-├── .env
-├── package.json
-└── README.md
-```
+> Scalable system for Nigerian Primary & Secondary Schools  
+> Built with a **workflow-first architecture**
 
 ---
-### Components:
-#### 🧩 1. CONFIG (SYSTEM SETTINGS)
-```
-src/config/
- ├── env.js
- ├── db.config.js
- ├── jwt.config.js
- ```
-***👉 Holds:*** database, config, JWT secrets, environment settings
+
+## 🌐 Core Idea
+
+<div class="card">
+  <p>Before writing code, understand how information flows:</p>
+  <ul>
+    <li>👨‍💼 Admin operations</li>
+    <li>👩‍🏫 Teacher activities</li>
+    <li>👨‍🎓 Student/Parent interactions</li>
+    <li>🔄 System data movement</li>
+  </ul>
+</div>
+
+[read more...](./doc/info_flow.md)
+
 ---
-#### 2. DATABASE LAYER
-```
-src/database/
- ├── index.js
- ├── connection.js
- ├── migrations/
- ├── seeders/
- ├── queries/
-```
-***👉 Handles:***
-* PostgreSQL connection
-* migrations (schema changes)
-* seed data (roles, permissions)
+
+## 🧭 1. School Setup Workflow
+
+<div class="workflow">
+  <h3>Steps</h3>
+  <ol>
+    <li>Admin registers school</li>
+    <li>System creates school profile</li>
+    <li>Admin configures:</li>
+    <ul>
+      <li>School name</li>
+      <li>Classes</li>
+      <li>Subjects</li>
+      <li>Academic session</li>
+    </ul>
+    <li>System initializes database</li>
+  </ol>
+
+  <h4>✅ Output</h4>
+  <ul>
+    <li>School ready</li>
+    <li>Classes created</li>
+    <li>Session active</li>
+  </ul>
+</div>
+
 ---
-#### 🧠 3. MODULES (CORE BUSINESS LOGIC) 🔥
-This is the MOST IMPORTANT part.
-Each module = a real-world workflow unit.
-```
-src/modules/
-```
-***n/b: every module here: must have a '...model.js'***
-##### 👤 AUTH MODULE
-```
-auth/
- ├── auth.controller.js
- ├── auth.service.js
- ├── auth.routes.js
- ├── auth.dto.js
- 
-```
-Handles:
-* login
-* register
-* JWT
-* password hashing
+
+## 👨‍🎓 2. Student Management Workflow
+
+<div class="workflow">
+  <h3>Steps</h3>
+  <ol>
+    <li>Admin creates/imports student</li>
+    <li>System assigns admission number</li>
+    <li>Assign class + session</li>
+    <li>Store in database</li>
+  </ol>
+
+  <h4>🔄 Data Flow</h4>
+  <p><strong>Input → Process → Output</strong></p>
+
+  <h4>⚠️ Edge Cases</h4>
+  <ul>
+    <li>Duplicate admission number</li>
+    <li>No class assigned</li>
+    <li>Missing parent info</li>
+  </ul>
+</div>
+
 ---
-##### 🏫 SCHOOL MODULE
-```
-school/
- ├── school.controller.js
- ├── school.service.js
- |-- school.model.js
- ├── school.routes.js
-```
-##### 🎓 STUDENT MODULE
-```
-student/
- ├── student.controller.js
- |-- student.model.js
- ├── student.service.js
- ├── student.repository.js
- ├── student.routes.js
- ├── student.factory.js
-```
-##### 👨‍🏫 TEACHER MODULE
-```
-teacher/
- ├── teacher.controller.js
- ├── teacher.service.js
- ├── teacher.routes.js
- |-- teacher.model.js
-```
-##### 🏫 CLASS MODULE
-```
-class/
- ├── class.controller.js
- ├── class.service.js
- ├── class.routes.js
- |-- class.model.js
-```
-##### 📚 SUBJECT MODULE
-```
-Bash
-subject/
- ├── subject.controller.js
- ├── subject.service.js
- ├── subject.routes.js
-```
-##### 📝 RESULT MODULE (IMPORTANT 🔥)
-```
-Bash
-result/
- ├── result.controller.js
- ├── result.service.js
- ├── result.calculator.js
- ├── result.policy.js
- ├── result.routes.js
- ```
-***👉 This is where:***
-* grading logic lives
-* score validation happens
-* RBAC rules apply
-#####  💬 MESSAGING MODULE
-```
-Bash
-messaging/
- ├── message.controller.js
- ├── message.service.js
- ├── message.routes.js
- ├── message.router.engine.js
- ```
-##### 🔔 NOTIFICATION MODULE
-```
-Bash
-notification/
- ├── notification.service.js
- ├── notification.events.js
- ├── notification.worker.js
- ```
-##### 💬 CHAT MODULE (FUTURE REAL-TIME)
-```
-Bash
-chat/
- ├── chat.gateway.js
- ├── chat.service.js
- ├── chat.events.js
- ```
-#### 🧩 4. SHARED LAYER (REUSABLE LOGIC)
-```
-Bash
-src/shared/
- ├── errors/
- │    ├── AppError.js
- │
- ├── responses/
- │    ├── success.response.js
- │    ├── error.response.js
- │
- ├── base/
- │    ├── BaseService.js
- │    ├── BaseController.js
- │    ├── BaseRepository.js
- ```
-***👉 This is where you avoid repeating code.***
+
+## 👩‍🏫 3. Teacher Management Workflow
+
+<div class="workflow">
+  <ol>
+    <li>Admin registers teacher</li>
+    <li>Assign staff ID</li>
+    <li>Assign subjects</li>
+    <li>Assign classes</li>
+    <li>Enable dashboard access</li>
+  </ol>
+
+  <p><strong>Note:</strong></p>
+  <ul>
+    <li>One teacher → multiple classes</li>
+    <li>One subject → multiple teachers</li>
+  </ul>
+</div>
+
 ---
-#### 🔐 5. MIDDLEWARES (SECURITY LAYER)
-```
-Bash
-src/middlewares/
- ├── auth.middleware.js
- ├── rbac.middleware.js
- ├── error.middleware.js
- ├── validation.middleware.js
- ```
- ---
-#### 🧠 6. POLICIES (OOP RBAC LOGIC) 🔥
-```
-Bash
-src/policies/
- ├── result.policy.js
- ├── student.policy.js
- ├── teacher.policy.js
- ```
-*👉 Example:*
-```
-JavaScript
-class ResultPolicy {
-  static canEdit(user) {
-    return user.role.can("edit_result");
-  }
-}
-```
+
+## 📚 4. Academic Structure Workflow
+
+<div class="workflow">
+  <ol>
+    <li>Define subjects</li>
+    <li>Assign subjects to classes</li>
+    <li>Assign teachers</li>
+    <li>Link Class ↔ Subject ↔ Teacher</li>
+  </ol>
+
+  <h4>Example</h4>
+  <pre>
+JSS1 → Math → Mr A
+JSS1 → English → Mrs B
+  </pre>
+</div>
+
 ---
-#### ⚙️ 7. UTILS (HELPERS)
-```
-Bash
-src/utils/
- ├── logger.js
- ├── hashPassword.js
- ├── jwt.js
- ├── gradeCalculator.js
- ├── validator.js
- ```
- ---
-#### 📡 8. EVENTS (SYSTEM AUTOMATION 🔥)
-```
-Bash
-src/events/
- ├── eventEmitter.js
- ├── result.events.js
- ├── message.events.js
- ```
-*👉 Example:*
-```
-result uploaded → trigger notification
-message sent → trigger inbox update
-```
+
+## 📝 5. Result & Grading Workflow
+
+<div class="workflow">
+  <ol>
+    <li>Teacher logs in</li>
+    <li>Select class & subject</li>
+    <li>Enter scores (CA1, CA2, Exam)</li>
+    <li>System validates</li>
+    <li>System calculates result</li>
+    <li>Store result</li>
+  </ol>
+
+  <h4>📊 Processing</h4>
+  <p>Input → Validation → Calculation → Output</p>
+
+  <h4>⚠️ Edge Cases</h4>
+  <ul>
+    <li>Missing scores</li>
+    <li>Invalid values (>100)</li>
+    <li>Duplicate entries</li>
+  </ul>
+</div>
+
 ---
-#### 🧪 9. TESTING
-```
-Bash
-tests/
- ├── auth.test.js
- ├── student.test.js
- ├── result.test.js
-```
+
+## 📊 6. Student Result Access
+
+<div class="workflow">
+  <ol>
+    <li>Student logs in</li>
+    <li>System verifies identity</li>
+    <li>Fetch results</li>
+    <li>Display result</li>
+  </ol>
+
+  <h4>🚀 Future</h4>
+  <ul>
+    <li>PDF export</li>
+    <li>Performance charts</li>
+  </ul>
+</div>
+
 ---
-#### 📚 10. DOCS
-```
-Bash
-docs/
- ├── architecture.md
- ├── rbac-design.md
- ├── workflow.md
- ```
- ---
-### 🧠 WHY THIS STRUCTURE IS POWERFUL
-1. Workflow-first
-Each module = real school process
-2. Scalable
-You can add:
-* mobile app
-* AI analytics
-* SMS system
-3. Clean separation
-DB logic ≠ business logic ≠ API logic
-4. RBAC ready
-Policies are isolated
+
+## 📢 7. Messaging Workflow
+
+<div class="workflow">
+  <ol>
+    <li>Admin sends message</li>
+    <li>System selects recipients</li>
+    <li>Store message</li>
+    <li>Deliver to inbox</li>
+  </ol>
+
+  <h4>Message Types</h4>
+  <ul>
+    <li>Announcement</li>
+    <li>Class updates</li>
+    <li>Exam notices</li>
+    <li>Fee reminders</li>
+  </ul>
+</div>
+
+---
+
+## 💬 8. Chat System (Future)
+
+<div class="workflow">
+  <ol>
+    <li>User opens chat</li>
+    <li>System loads contacts</li>
+    <li>Send message</li>
+    <li>Permission check</li>
+    <li>Store & deliver</li>
+  </ol>
+
+  <h4>Rules</h4>
+  <ul>
+    <li>Admin → everyone</li>
+    <li>Teacher → assigned students</li>
+    <li>Student → restricted</li>
+  </ul>
+</div>
+
+---
+
+## 🔔 9. Notification Workflow
+
+<div class="workflow">
+  <ol>
+    <li>Event occurs</li>
+    <li>Trigger notification</li>
+    <li>Send via system</li>
+  </ol>
+
+  <h4>Examples</h4>
+  <ul>
+    <li>Result ready</li>
+    <li>New message</li>
+    <li>Exam scheduled</li>
+  </ul>
+</div>
+
+---
+
+## 🧑‍💼 10. Admin Dashboard
+
+<div class="workflow">
+  <ol>
+    <li>Admin logs in</li>
+    <li>System loads analytics</li>
+    <li>Admin performs actions</li>
+  </ol>
+</div>
+
+---
+
+## 🧠 System Design Summary
+
+<div class="grid">
+  <ul>
+    <li>Authentication</li>
+    <li>Student Management</li>
+    <li>Teacher Management</li>
+    <li>Academic Structure</li>
+    <li>Result System</li>
+    <li>Messaging</li>
+    <li>Chat</li>
+    <li>Notifications</li>
+  </ul>
+</div>
+
+---
+
+## 🏗️ Scaling Strategy
+
+<div class="workflow">
+  <h4>Phase 1</h4>
+  <ul>
+    <li>Students</li>
+    <li>Teachers</li>
+    <li>Results</li>
+  </ul>
+
+  <h4>Phase 2</h4>
+  <ul>
+    <li>Notifications</li>
+    <li>Messaging</li>
+  </ul>
+
+  <h4>Phase 3</h4>
+  <ul>
+    <li>Chat</li>
+    <li>File sharing</li>
+  </ul>
+
+  <h4>Phase 4</h4>
+  <ul>
+    <li>Mobile app</li>
+    <li>SMS integration</li>
+    <li>AI analytics</li>
+  </ul>
+</div>
+
+---
+
+## ⚙️ Final Principle
+
+<div class="highlight">
+  <h2>Input → Process → Output → User → Next Action</h2>
+</div>
+
+---
+>To view the structure ...[follow this link](./doc/structure.md)
